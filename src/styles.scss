@@ -1,1 +1,75 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./_var.scss";
+
+*{
+  color:var(--text-color);
+  font-family: var(--font-family);
+  span.p-button-icon{
+      color:var(--primary-color) !important;
+
+  }
+  span.p-button-label{
+    color:white !important;
+
+  }
+  button.p-datepicker-trigger{
+    span.p-button-icon{
+      color:white !important;
+    }
+  }
+}
+
+body{
+  background-color: var(--surface-b);
+  margin: 0px;
+  padding: 0px;
+}
+.content-page{
+    width: 90%;
+    margin: 20px auto;
+    .title-pricipal{
+      margin-top: 10px;
+      font-size: 30px;
+      // color: var(--gray-900);
+    }
+}
+
+app-table{
+  h4{
+    font-size: x-large;
+    margin-left: 5px;
+    color: var(--gray-900);
+  }
+  .table{
+    padding: auto 10px;
+    width: 95%;
+    margin: auto;
+  }
+}
+
+
+ .delete{
+  color:#f44336;
+ }
+.center{
+  text-align: center;
+}
+
+a{
+  text-decoration: none;
+    color: inherit;
+}
+
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin: 1.5rem 0 1rem;
+  font-family: inherit;
+  font-weight: 600;
+  line-height: 1.2;
+  color: inherit;
+}

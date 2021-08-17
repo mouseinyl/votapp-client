@@ -1,0 +1,28 @@
+<p-dialog header="Title" [(visible)]="display" [style]="{width: '100vh'}">
+  <div class="content-detail">
+    <div class="grafig">
+      <app-chart [datos]="data.datos" [labels]="data.labels"></app-chart>
+    </div>
+    <div class="info-content">
+      <h4>{{ data.label }}</h4>
+      <div class="content">
+        <span class="title">Estado</span>
+        <span> {{ data.estado }}</span>
+      </div>
+      <div class="content">
+        <span class="title">Cantidad de votos</span>
+        <span>{{ data.cantida_votos }}</span>
+      </div>
+      <div class="content">
+        <span class="title">Actual Ganador </span>
+        <span>{{ data.ganador }}</span>
+      </div>
+    </div>
+    <ng-template pTemplate="footer">
+      <p-button icon="pi pi-check" (click)="close()" label="Ok" styleClass="p-button-text"></p-button>
+  </ng-template>
+
+  </div>
+</p-dialog>
+
+

@@ -1,0 +1,53 @@
+<p-dialog [(visible)]="votanteDialog" [style]="{ width: '450px' }" header="Nuevo Votante" [modal]="true"
+  styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <form [formGroup]="createUser">
+      <div class="p-field">
+        <label for="ID">ID</label>
+        <input type="text" pInputText id="ID" formControlName="id" required autofocus />
+      </div>
+      <div class="p-field">
+        <label for="name">Nombre</label>
+        <input type="text" pInputText id="name"formControlName="nombre" required autofocus />
+      </div>
+    </form>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="cancelar()"></button>
+    <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="createUserEvent()"></button>
+  </ng-template>
+</p-dialog>
+
+<p-dialog [(visible)]="candidatoDialog" [style]="{ width: '450px' }" header="Nuevo Candidato" [modal]="true"
+  styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <form [formGroup]="createUser">
+      <div class="p-field">
+        <p-fileUpload mode="basic" formGroupName="foto" name="demo[]" url="./upload.php" accept="image/*" [maxFileSize]="1000000"
+          chooseLabel="Foto"></p-fileUpload>
+      </div>
+      <div class="p-field">
+        <label for="ID">ID</label>
+        <input type="text" pInputText id="ID" formControlName="id" required autofocus />
+      </div>
+      <div class="p-field">
+        <label for="nombre">Nombre</label>
+        <input type="text" pInputText id="nombre" formControlName="nombre" required autofocus />
+      </div>
+      <div class="p-field">
+        <label for="apellido">Apellido</label>
+        <input type="text" pInputText id="apellido" formControlName="apellido" required autofocus />
+      </div>
+      <div class="p-field">
+        <label for="partido">Partido</label>
+        <input type="text" pInputText id="partido" formControlName="partido" required autofocus />
+      </div>
+    </form>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="cancelar()"></button>
+    <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="createUserEvent()"></button>
+  </ng-template>
+</p-dialog>
