@@ -1,0 +1,32 @@
+<div class="content-page">
+  <h4 class="title-pricipal">Nuevo Evento</h4>
+  <form [formGroup]="form">
+    <div class="p-fluid p-col-12 p-d-flex p-flex-row p-jc-around">
+      <div class="p-field p-col-4">
+        <label for="username1">Username</label>
+        <input id="username1" type="username" pInputText />
+      </div>
+      <div class="p-field p-col-4">
+        <label for="dateInit">Fecha Inicio</label>
+        <p-calendar [showIcon]="true" class="p-mb-3" inputId="dateInit" formControlName="dateInit"></p-calendar>
+      </div>
+      <div class="p-field p-col-4">
+        <label for="dateEnd">Fecha Fin</label>
+        <p-calendar [showIcon]="true" class="p-mb-3" inputId="dateEnd" formControlName="dateEnd"></p-calendar>
+      </div>
+    </div>
+    <div class="p-d-inline-flex p-col-12">
+      <div class="p-col-6 table-user">
+        <app-table [titleTable]="'Votantes'" [tableData]="datae.votante" [tableConfig]="rowVotantes" (crear)="openDialog('votante')"></app-table>
+      </div>
+      <div class="p-col-6 table-user">
+        <app-table [titleTable]="'Candidatos'" [tableData]="datae.candidato" [tableConfig]="rowCandidatos" (crear)="openDialog('')"></app-table>
+      </div>
+    </div>
+    <div class="p-d-flex p-jc-center">
+      <button pButton pRipple type="button" class="p-button-rounded p-button-success" (click)="createEvento()">Crear Evento</button>
+    </div>
+  </form>
+</div>
+
+<app-create-user #user (userCreated)="createEvent($event)"></app-create-user>

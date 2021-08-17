@@ -1,0 +1,14 @@
+<div class="content-page">
+  <h3 class="title-pricipal">Administración</h3>
+  <div class="p-d-flex p-jc-end p-pb-3">
+    <button pButton pRipple type="button" class="p-button-rounded" >
+     <a routerLink="/administracion/crear-evento">Nuevo Evento</a>
+    </button>
+  </div>
+  <app-table
+    [tableData]="cars"
+    [tableConfig]="tableConfig"
+    [titleTable]="'Votaciones'"
+    [action]="action"
+  ></app-table>
+</div>

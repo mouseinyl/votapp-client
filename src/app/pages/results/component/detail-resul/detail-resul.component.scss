@@ -1,0 +1,31 @@
+.info-content {
+  display: flex;
+  flex-direction: column;
+  & .content {
+    display: flex;
+    width: 100%;
+    margin: 10px 0px;
+    & span.title {
+      width: 50%;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+    & span {
+      width: 50%;
+    }
+  }
+}
+
+.content-detail {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  & .grafig{
+    width: 60%;
+  }
+  & .info-content{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+  }
+}

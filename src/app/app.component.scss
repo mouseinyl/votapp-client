@@ -1,0 +1,101 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./src/var.scss";
+.content-menu {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+  flex-direction: row;
+
+  .menu {
+    transition: 0.7s;
+    width: 5em;
+    height: 97vh;
+    margin: auto;
+    background-color: $bg-primary;
+    border-radius: 10px;
+    &:hover {
+      transition: 0.7s;
+      width: 20em;
+      justify-content: start;
+      & .item-menu {
+        transition: 0.4s;
+        display: flex;
+        justify-content: start;
+        margin: 2.5em 2.5em;
+        align-items: center;
+        &:hover {
+          background-color: var(--primary-color);
+          padding: 10px;
+          border-radius: 10px;
+          & i,
+          span {
+            color: white;
+          }
+        }
+        & span {
+          transition: 0.4s;
+          display: block;
+          font-size: 1.3em;
+          margin: auto 7px;
+        }
+      }
+    }
+    & .item-menu {
+      transition: 0.4s;
+      display: flex;
+      justify-content: center;
+      margin: 2em auto 4em auto;
+      align-items: center;
+      & span {
+        display: none;
+      }
+      & i {
+        font-size: 1.5em;
+        color: var(--primary-color);
+      }
+    }
+  }
+  .content-body {
+    width: 100%;
+    display: flex;
+    padding: 1.5vh;
+
+    & .cont {
+      background-color: $bg-primary;
+      width: 100%;
+      border-radius: 10px;
+      padding: 3px 5px;
+      background-color: #f5f5f5;
+      width: 100%;
+      border-radius: 10px;
+      padding: 3px 5px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+  }
+}
+
+.menu{
+  &:hover {
+    .active {
+      background-color: var(--primary-color);
+      padding: 10px;
+      border-radius: 10px;
+      & i,span {
+        color: white;
+      }
+    }
+  }
+  .active {
+    background-color: var(--primary-color);
+    padding: 10px;
+    margin: 3px;
+    border-radius: 10px;
+    & i,span {
+      color: white !important;
+    }
+  }
+
+}

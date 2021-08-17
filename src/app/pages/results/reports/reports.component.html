@@ -1,0 +1,12 @@
+
+<div class="content">
+
+  <div class="grafig" *ngFor="let item of resultados; let i = index">
+    <p-card [header]="item.label + i">
+      <app-chart [datos]="item.datos" [labels]="item.labels"></app-chart>
+      <button pButton pRipple type="button" label="detalles" class="p-button-rounded" (click)="dialog.open()"></button>
+      <app-detail-resul [data]="item" #dialog></app-detail-resul>
+    </p-card>
+  </div>
+</div>
+
