@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { tableRows, action } from '../../../../model/interfaces/table-row';
+import { RequestServices } from '../../../../services/request-services.service';
 
 @Component({
   selector: 'app-events',
@@ -12,7 +13,7 @@ export class EventsComponent implements OnInit {
   public tableConfig: tableRows[]
   public action: action = { delete: true }
 
-  constructor() { }
+  constructor(private RequestServices: RequestServices) { }
 
   ngOnInit(): void {
 
@@ -39,6 +40,12 @@ export class EventsComponent implements OnInit {
       { name: "distritales", estado: "En pausa", },
     ]
 
+  }
+
+  getEvents(){
+    this.RequestServices.get('/eventos').subscribe((x)=>{
+      console.log(x)
+    })
   }
 
 }

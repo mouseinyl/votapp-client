@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 
 
@@ -11,10 +12,25 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
 
   public menuItems = []
+  public clearPage = true
 
-  constructor() { }
+  constructor(private router:Router) {
+    this.formatPage();
+  }
+
+
+  formatPage(){
+    this.router.events.subscribe((x)=>{
+      if ( x instanceof NavigationEnd){
+        console.log(x.url)
+        this.clearPage =['/auth'].includes(x.url);
+      }
+    })
+  }
 
   ngOnInit() {
+
+
     this.menuItems = [
       {
         name:'Administración',

@@ -7,6 +7,7 @@ import { ComponentsModule } from './components/components.module';
 import {MenuModule} from 'primeng/menu';
 import {ChartModule} from 'primeng/chart';
 import { ManagementComponent } from './pages/management/management.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ManagementComponent } from './pages/management/management.component';
     ComponentsModule,
     BrowserAnimationsModule,
     MenuModule,
+    HttpClientModule
 
   ],
   providers: [],
