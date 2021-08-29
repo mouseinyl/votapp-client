@@ -1,0 +1,17 @@
+<div class="content">
+  <div class="p-card card" *ngFor="let item of items">
+
+      <div class="img">
+
+        <img src="assets/user.png" alt="">
+      </div>
+      <div class="info">
+        <h4>{{item.nombre}} {{item.apellido}}</h4>
+        <h5>{{item.partido}}</h5>
+      </div>
+  </div>
+
+  <div class=" next p-m-4">
+    <button pButton pRipple type="button" label="siguiente" class="p-button-rounded right" (click)="next()"></button>
+  </div>
+</div>

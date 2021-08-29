@@ -15,7 +15,7 @@ import { ChartComponent } from './chart/chart.component';
 import { ChartModule } from 'primeng/chart';
 
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
-
+import {StepsModule} from 'primeng/steps';
 const componet = [TableComponent,ChartComponent]
 const modules = [
   InputTextModule,
@@ -29,7 +29,8 @@ const modules = [
   DialogModule,
   FileUploadModule,
   ChartModule,
-  ProgressSpinnerModule
+  ProgressSpinnerModule,
+  StepsModule
 ]
 
 @NgModule({

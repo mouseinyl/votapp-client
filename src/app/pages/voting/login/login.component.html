@@ -1,0 +1,27 @@
+<div class="content">
+  <div class="sub-content">
+    <form [formGroup]="form">
+      <div class="center p-text-lg-center">
+        <h3>Inicia</h3>
+      </div>
+      <div class="input">
+        <h5>ID</h5>
+        <span class="p-input-icon-right">
+          <i class="pi pi-user"></i>
+          <input type="text" pInputText formControlName="id" />
+        </span>
+      </div>
+
+      <div class="p-mt-4 p-d-flex p-justify-center">
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Iniciar"
+          [disabled]="!form.valid"
+          (click)="next()" class="p-d-flex center"
+        ></button>
+      </div>
+    </form>
+  </div>
+</div>

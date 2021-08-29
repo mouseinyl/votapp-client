@@ -1,12 +1,25 @@
 <div class="content-menu">
+
+
   <div class="menu" *ngIf="!clearPage">
-    <a class="item-menu" *ngFor="let item of menuItems" routerLinkActive='active' [routerLink]="item.router">
+    <!-- <a class="item-menu" *ngFor="let item of menuItems" routerLinkActive='active' [routerLink]="item.router">
       <i [class]="item.icon"></i>
       <span> {{item.name}}</span>
-    </a>
+    </a> -->
   </div>
   <div class="content-body">
     <div class="cont">
+      <!-- <p-toolbar>
+        <div class="p-toolbar-group-left">
+
+      </div>
+
+        <div class="p-toolbar-group-right">
+
+            <i class="pi pi-user" color="primary" style="font-size:1rem"></i>
+
+        </div>
+    </p-toolbar> -->
       <router-outlet></router-outlet>
     </div>
   </div>

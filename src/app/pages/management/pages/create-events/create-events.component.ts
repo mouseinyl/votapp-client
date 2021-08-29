@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { tableRows } from '../../../../model/interfaces/table-row';
 import { getTestBed } from '@angular/core/testing';
 import { CreateUserComponent } from '../../components/create-user/create-user.component';
+import { RequestServices } from '../../../../services/request-services.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -16,6 +18,9 @@ export class CreateEventsComponent implements OnInit {
   public form: FormGroup
   public createUser: FormGroup
   public methop
+  public loaddin= true
+  public detalle = false
+  public urlParam
 
   votanteDialog = false
   candidatoDialog = false
@@ -32,22 +37,22 @@ export class CreateEventsComponent implements OnInit {
     // {header:'Partido',field:'partido'},
   ]
 
-  public data = {
-    candidato: [],
-    votante: [
-      { id: "101010", nombre: "creacion" },
-      { id: "101010", nombre: "creacion" },
-    ]
+  public data:any = {
+    candidatos: [],
+    votantes: []
   }
 
-  constructor(private fb: FormBuilder,) { }
+  constructor(private fb: FormBuilder,private request: RequestServices, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.initform()
-  }
-
-  get datae() {
-    return this.data
+    if (this.route.snapshot.params.name != undefined){
+      this.urlParam = this.route.snapshot.params.name
+      this.detalle = true;
+      this.getEventos();
+    }else{
+      this.loaddin = false
+    }
   }
 
   openDialog(e) {
@@ -56,33 +61,64 @@ export class CreateEventsComponent implements OnInit {
 
 
 
-  createEvent(e:any[]){
-    if(e[0].partido){
-      this.createCandidato(e)
+  createEvent(e:any){
+    if (e.e =="votante"){
+      this.data.votantes.push(e.user)
     }else{
-      this.createVotante(e)
+      this.data.candidatos.push(e.user)
     }
-  }
-
-  createVotante(e) {
-    console.log(e)
 
   }
+  iniEvento(){
+    this.request.post('eventos/iniciar',{},{name:"name_event", value:this.data.nombre}).subscribe((x)=>{
+      console.log(x);
+      this.loaddin = true;
+      this.getEventos()
+    })
 
-  createCandidato(e) {
-    console.log(e)
   }
-
+  stopEvento(){
+    this.request.post('eventos/stop',{},{name:"name_event", value:this.data.nombre}).subscribe((x)=>{
+      console.log(x);
+      this.loaddin = true;
+      this.getEventos()
+    })
+  }
+  getEventos(){
+    this.request.get('eventos',{name:"evento", value:this.urlParam}).subscribe((x)=>{
+      console.log(x)
+      this.data = x.data
+      this.initform()
+      this.loaddin = false
+      this.form.patchValue({
+        nombre:x.data.nombre
+      })
+    })
+  }
   createEvento() {
-    console.log('creada')
+    if(this.form.valid && this.data.candidatos.length >1){
+      let body = Object.assign({
+        votantes:this.data.votantes,
+        candidatos:this.data.candidatos
+      }, this.form.value)
+      this.request.post('eventos/crear',body).subscribe((x)=>{
+        console.log(x)
+      })
+    }else{
+      console.log("invalido")
+
+    }
   }
 
   initform() {
     this.form = this.fb.group({
-      name: ['', [Validators.required]],
-      dateInit: ['', [Validators.required]],
-      dateEnd: ['', [Validators.required]]
+      nombre: ['', [Validators.required]],
+      fechaInit: ['', [Validators.required]],
+      fechaFin: ['', [Validators.required]]
     })
   }
+
+
+
 
 }

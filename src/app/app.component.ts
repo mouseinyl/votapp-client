@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe((x)=>{
       if ( x instanceof NavigationEnd){
         console.log(x.url)
-        this.clearPage =['/auth'].includes(x.url);
+        this.clearPage =['/auth', '/voting'].includes(x.url);
       }
     })
   }
