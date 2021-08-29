@@ -43,8 +43,9 @@ export class CreateUserComponent implements OnInit {
     this.votanteDialog = false
   }
 
-  createUserEvent() {
-    this.userCreated.emit(this.createUser.value)
+  createUserEvent(e) {
+    this.userCreated.emit({e,user:this.createUser.value})
+    this.cancelar()
   }
 
 

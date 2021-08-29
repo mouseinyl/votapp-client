@@ -15,7 +15,7 @@ export class TableComponent implements OnInit,OnChanges  {
   @Input() tableData= []
   @Input() tableConfig:tableRows [];
   @Input() titleTable:string = ''
-  @Input() action:action = {delete:false}
+  @Input() action?:action
   @Input() search = []
 
   @Output() crear:EventEmitter<any> =  new EventEmitter();
@@ -35,10 +35,6 @@ export class TableComponent implements OnInit,OnChanges  {
     return [...this.tableData]
   }
   crearAction(e){
-
-    this.tableData.push({id: "101010", nombre: "cqueos"})
-    this.table.reset()
-    console.log(this.tableData)
     this.crear.emit(e)
   }
 

@@ -26,7 +26,7 @@
       <div class="p-d-flex p-ai-center p-jc-end">
           <span class="p-input-icon-left">
               <i class="pi pi-search"></i>
-              <input pInputText type="text" (input)="table.filterGlobal($event.target['value'], 'contains')" placeholder="Search..." />
+              <input pInputText type="text" (input)="table.filterGlobal($event.target['nombre'], 'contains')" placeholder="Search..." />
           </span>
       </div>
   </ng-template>
@@ -37,7 +37,7 @@
           <th *ngFor="let col of columns">
             {{col.header}}
           </th>
-          <ng-container *ngIf="action.delete">
+          <ng-container *ngIf="action">
             <th>Acción</th>
           </ng-container>
         </tr>
@@ -48,9 +48,12 @@
           <td *ngFor="let col of columns" >
             {{rowData[col.field]}}
           </td>
-          <td class="" routerLink=''>
-            <button pButton type="button" class="p-button-text" icon="pi pi-trash"></button>
-          </td>
+          <ng-container *ngIf="action">
+            <td class="" [routerLink]='action.ver.route+"/"+ rowData.name' *ngIf="action.ver.estado">
+              <button pButton type="button" class="p-button-text" icon="pi pi-eye"></button>
+            </td>
+          </ng-container>
+
         </tr>
       </ng-template>
     </p-table>

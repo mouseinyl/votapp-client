@@ -10,41 +10,29 @@ import { RequestServices } from '../../../../services/request-services.service';
 export class EventsComponent implements OnInit {
 
   public cars: any[] = []
-  public tableConfig: tableRows[]
-  public action: action = { delete: true }
+  public tableConfig: tableRows[] = [
+    { field: 'name', header: 'Nombre' },
+      { field: 'estado', header: 'Estado' },
+      { field: 'candidatos', header: '#candidatos' },
+      { field: 'votantes', header: '#Votantes' },
+
+  ]
+  public action: action = {ver:{estado:true,route:'/administracion/evento'}, }
 
   constructor(private RequestServices: RequestServices) { }
 
-  ngOnInit(): void {
-
-
-    this.tableConfig = [
-
-      { field: 'name', header: 'Nombre' },
-      { field: 'estado', header: 'Estado' },
-
-    ]
-
-    this.cars = [
-      { name: "presidencias", estado: "activo", },
-      { name: "colegiales", estado: "Inactiva", },
-      { name: "distritales", estado: "En pausa", },
-      { name: "presidencias", estado: "activo", },
-      { name: "colegiales", estado: "Inactiva", },
-      { name: "distritales", estado: "En pausa", },
-      { name: "presidencias", estado: "activo", },
-      { name: "colegiales", estado: "Inactiva", },
-      { name: "distritales", estado: "En pausa", },
-      { name: "presidencias", estado: "activo", },
-      { name: "colegiales", estado: "Inactiva", },
-      { name: "distritales", estado: "En pausa", },
-    ]
-
-  }
+  ngOnInit(): void { this.getEvents() }
 
   getEvents(){
-    this.RequestServices.get('/eventos').subscribe((x)=>{
-      console.log(x)
+    this.RequestServices.get('eventos').subscribe((x)=>{
+      x.data.map(z=>{
+        this.cars.push({
+          name:z.nombre,
+          estado:z.estado,
+          candidatos:z.candidatos.length,
+          votantes:z.votantes.length
+        })
+      })
     })
   }
 

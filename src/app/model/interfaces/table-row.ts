@@ -3,5 +3,11 @@ export interface tableRows {
 }
 
 export interface action {
-  delete?: boolean,
+  ver?: detailAccion,
+  delete?: detailAccion
+}
+
+export interface detailAccion {
+  estado?:boolean,
+  route?:string
 }

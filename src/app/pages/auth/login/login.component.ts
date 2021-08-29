@@ -13,19 +13,22 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      usuario:['rmaaron12@gmail.com', [Validators.required]],
-      password:['12345678', [Validators.required]]
+      email:['rmaaron12@gmail.com', [Validators.required]],
+      pass:['12345678', [Validators.required]]
     })
   }
 
 
   send(){
     this.request.post('auth/login',{...this.form.value}).subscribe((x)=>{
-      if (x.data.uid){
+
+      console.log(x.data)
+      if (x.data.uid != undefined){
         this.Router.navigate(['/administracion'])
+        localStorage.setItem('uid',x.data.uid);
+      }else{
       }
-      console.log(x.data.uid)
-     localStorage.setItem('uid',x.data.uid);
+
     }, (err)=>{
 
     })
