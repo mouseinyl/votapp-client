@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
 export class RequestServices {
 
   public header = new HttpHeaders
-  public api = 'http://localhost:3000/'
+  public api = environment.apiUrl
   constructor(private http: HttpClient) {
     this.header.set("uid",localStorage.getItem("uid"))
 
