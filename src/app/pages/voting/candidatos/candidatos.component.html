@@ -1,9 +1,8 @@
 <div class="content">
-  <div class="p-card card" *ngFor="let item of items">
+  <div class="p-card card" *ngFor="let item of items" (click)="voto(item)">
 
       <div class="img">
-
-        <img src="assets/user.png" alt="">
+        <img src="assets/user.png" alt="" >
       </div>
       <div class="info">
         <h4>{{item.nombre}} {{item.apellido}}</h4>

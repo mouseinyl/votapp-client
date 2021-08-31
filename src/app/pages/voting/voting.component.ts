@@ -21,7 +21,7 @@ export class VotingComponent implements OnInit {
     routerLink: 'vota'
   },
   {
-    label: 'Confirma',
+    label: 'Listo',
     routerLink: 'confirma'
   },
 

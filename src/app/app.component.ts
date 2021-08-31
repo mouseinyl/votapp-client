@@ -22,8 +22,8 @@ export class AppComponent implements OnInit {
   formatPage(){
     this.router.events.subscribe((x)=>{
       if ( x instanceof NavigationEnd){
-        console.log(x.url)
-        this.clearPage =['/auth', '/voting'].includes(x.url);
+        console.log(x.url.split("/"))
+        this.clearPage =['auth', 'voting'].includes(x.url.split("/")[1])
       }
     })
   }

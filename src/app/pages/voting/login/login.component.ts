@@ -11,9 +11,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   public form: FormGroup
-  constructor(private fb: FormBuilder, private  request:RequestServices, private Router: Router, private route: ActivatedRoute ) { }
 
+  constructor(private fb: FormBuilder, private  request:RequestServices, private Router: Router, private route: ActivatedRoute ) { }
+  votacion
   ngOnInit(): void {
+
+    this.votacion =  this.route.snapshot.parent.params.votacion
+
     this.form = this.fb.group({
       id:['', [Validators.required]],
 
@@ -22,19 +26,23 @@ export class LoginComponent implements OnInit {
 
 
   next(){
-    this.Router.navigate(['/voting/'+this.route.snapshot.params.votacion +'/vota']);
-    // this.request.post('auth/login',{...this.form.value}).subscribe((x)=>{
+    if(this.form.valid){
+     const body = {
+      votante:this.form.value.id,
+      votacion:this.votacion
+     }
+      this.request.post("voting/validuser",body).subscribe((x)=>{
+        console.log(x)
+        if(x.estado){
+          localStorage.setItem("e",this.form.value.id);
+          this.Router.navigate(['/voting/'+this.votacion+'/vota']);
+        }else {
+          console.log(x.menssage)
+        }
+      })
 
+    }
 
-    //   if (x.data.uid != undefined){
-    //     this.Router.navigate(['/administracion'])
-    //     localStorage.setItem('uid',x.data.uid);
-    //   }else{
-    //   }
-
-    // }, (err)=>{
-
-    // })
   }
 
 
