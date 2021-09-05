@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RequestServices } from '../../../services/request-services.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   public form: FormGroup
 
-  constructor(private fb: FormBuilder, private  request:RequestServices, private Router: Router, private route: ActivatedRoute ) { }
+  constructor(private fb: FormBuilder, private  request:RequestServices, private Router: Router, private route: ActivatedRoute, private alert:AlertService ) { }
   votacion
   ngOnInit(): void {
 
@@ -35,12 +36,16 @@ export class LoginComponent implements OnInit {
         console.log(x)
         if(x.estado){
           localStorage.setItem("e",this.form.value.id);
-          this.Router.navigate(['/voting/'+this.votacion+'/vota']);
+          this.alert.success("genial",x.message).then((z)=>{
+            this.Router.navigate(['/voting/'+this.votacion+'/vota']);
+          })
         }else {
-          console.log(x.menssage)
+          this.alert.error("Opps", x.message)
         }
       })
 
+    }else{
+      this.alert.error("Opps", " Debes colocar tu identificación")
     }
 
   }

@@ -17,7 +17,7 @@ export class EventsComponent implements OnInit {
       { field: 'votantes', header: '#Votantes' },
 
   ]
-  public action: action = {ver:{estado:true,route:'/administracion/evento'}, }
+  public action: action = {ver:{estado:true,route:'/administracion/evento'},create:false }
 
   constructor(private RequestServices: RequestServices) { }
 

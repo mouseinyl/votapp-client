@@ -1,4 +1,4 @@
-<p-dialog header="Title" [(visible)]="display" [style]="{width: '100vh'}">
+<p-dialog [header]="data.label" [(visible)]="display" [style]="{width: '100vh'}">
   <div class="content-detail">
     <div class="grafig">
       <app-chart [datos]="data.datos" [labels]="data.labels"></app-chart>
@@ -14,8 +14,8 @@
         <span>{{ data.cantida_votos }}</span>
       </div>
       <div class="content">
-        <span class="title">Actual Ganador </span>
-        <span>{{ data.ganador }}</span>
+        <!-- <span class="title">Actual Ganador </span>
+        <span>{{ data.ganador }}</span> -->
       </div>
     </div>
     <ng-template pTemplate="footer">

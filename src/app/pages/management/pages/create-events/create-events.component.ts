@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { tableRows } from '../../../../model/interfaces/table-row';
+import { action, tableRows } from '../../../../model/interfaces/table-row';
 import { getTestBed } from '@angular/core/testing';
 import { CreateUserComponent } from '../../components/create-user/create-user.component';
 import { RequestServices } from '../../../../services/request-services.service';
@@ -41,16 +41,19 @@ export class CreateEventsComponent implements OnInit {
     candidatos: [],
     votantes: []
   }
-
+  public action:action = {create:false}
   constructor(private fb: FormBuilder,private request: RequestServices, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.initform()
+    console.log(this.route.snapshot.params.name)
     if (this.route.snapshot.params.name != undefined){
       this.urlParam = this.route.snapshot.params.name
       this.detalle = true;
+      this.action.create = false
       this.getEventos();
     }else{
+      this.action.create = true
       this.loaddin = false
     }
   }
@@ -113,7 +116,7 @@ export class CreateEventsComponent implements OnInit {
   initform() {
     this.form = this.fb.group({
       nombre: ['', [Validators.required]],
-      fechaInit: ['', [Validators.required]],
+      fechaInit: ['11-10-2021', [Validators.required]],
       fechaFin: ['', [Validators.required]]
     })
   }

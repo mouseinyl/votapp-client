@@ -24,7 +24,7 @@
   <ng-template pTemplate="content">
     <form [formGroup]="createUser">
       <div class="p-field">
-        <p-fileUpload mode="basic" formGroupName="foto" name="demo[]" url="./upload.php" accept="image/*" [maxFileSize]="1000000"
+        <p-fileUpload mode="basic" formControlName="foto" name="demo[]"  accept="image/*" [maxFileSize]="1000000"
           chooseLabel="Foto"></p-fileUpload>
       </div>
       <div class="p-field">

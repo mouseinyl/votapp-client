@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RequestServices } from 'src/app/services/request-services.service';
+import { AlertService } from '../../../services/alert.service';
 
 @Component({
   selector: 'app-candidatos',
@@ -8,43 +9,45 @@ import { RequestServices } from 'src/app/services/request-services.service';
   styleUrls: ['./candidatos.component.scss']
 })
 export class CandidatosComponent implements OnInit {
-  items :any[]
+  items: any[]
   public votacion
   constructor(private Router: Router,
-    private route: ActivatedRoute ,
-    private  request:RequestServices,
-    ) { }
+    private route: ActivatedRoute,
+    private request: RequestServices,
+    private alert: AlertService
+  ) { }
 
-    ngOnInit(): void {
-      this.votacion =  this.route.snapshot.parent.params.votacion
-      this.init()
+  ngOnInit(): void {
+    this.alert.info('Seleciona un Candidato')
+    this.votacion = this.route.snapshot.parent.params.votacion
+    this.init()
   }
-  init(){
+  init() {
 
-    this.request.get('voting',{name:'votacion',value:this.votacion}).subscribe((x)=>{
+    this.request.get('voting', { name: 'votacion', value: this.votacion }).subscribe((x) => {
       this.items = x.candidatos
     })
 
   }
 
-  voto(e){
+  voto(e) {
     let body = {
-      candidato:e,
-      votante:localStorage.getItem("e"),
-      votacion:this.votacion
+      candidato: e,
+      votante: localStorage.getItem("e"),
+      votacion: this.votacion
     }
-    this.request.post("voting/voto",body).subscribe((x)=>{
+    this.request.post("voting/voto", body).subscribe((x) => {
 
-      if(x.data.estado){
-      console.log(x)
+      if (x.data.estado) {
+        this.alert.success('Genial',x.data.message)
         this.next()
-      }else{
-        console.log(x)
+      } else {
+        this.alert.error('Oppps',x.data.message)
       }
     })
   }
-  next(){
-    this.Router.navigate(['/voting/'+this.votacion +'/confirma']);
+  next() {
+    this.Router.navigate(['/voting/' + this.votacion + '/confirma']);
 
   }
 }

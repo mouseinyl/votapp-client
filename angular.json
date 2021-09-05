@@ -35,11 +35,13 @@
                "node_modules/primeng/resources/themes/saga-green/theme.css",
                "node_modules/primeng/resources/primeng.css",
               "node_modules/primeicons/primeicons.css",
-              "./node_modules/primeflex/primeflex.css"
+              "./node_modules/primeflex/primeflex.css",
+              "node_modules/sweetalert2/dist/sweetalert2.css"
 
             ],
             "scripts": [
-            "node_modules/chart.js/dist/chart.js"
+            "node_modules/chart.js/dist/chart.js",
+            "node_modules/sweetalert2/dist/sweetalert2.js"
             ]
           },
           "configurations": {

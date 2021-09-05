@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { AlertService } from './services/alert.service';
 
 
 
@@ -14,8 +15,9 @@ export class AppComponent implements OnInit {
   public menuItems = []
   public clearPage = true
 
-  constructor(private router:Router) {
+  constructor(private router:Router, private alert: AlertService) {
     this.formatPage();
+
   }
 
 
@@ -23,7 +25,7 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe((x)=>{
       if ( x instanceof NavigationEnd){
         console.log(x.url.split("/"))
-        this.clearPage =['auth', 'voting'].includes(x.url.split("/")[1])
+        this.clearPage =['auth', 'voting',"","/"].includes(x.url.split("/")[1])
       }
     })
   }

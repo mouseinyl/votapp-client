@@ -23,7 +23,7 @@
       </div>
       <div class="p-field p-col-4">
         <label for="dateInit">Fecha Inicio</label>
-        <p-calendar [showIcon]="true" class="p-mb-3" inputId="dateInit" formControlName="fechaInit"></p-calendar>
+        <p-calendar [showIcon]="true" class="p-mb-3" [dateFormat]="'dd-mm-aa'" [inline]="true" inputId="dateInit" formControlName="fechaInit"></p-calendar>
       </div>
       <div class="p-field p-col-4">
         <label for="dateEnd">Fecha Fin</label>
@@ -32,10 +32,10 @@
     </div>
     <div class="p-d-inline-flex p-col-12">
       <div class="p-col-6 table-user">
-        <app-table [titleTable]="'Votantes'" [tableData]="data.votantes" [tableConfig]="rowVotantes" (crear)="openDialog('votante')"></app-table>
+        <app-table [titleTable]="'Votantes'" [tableData]="data.votantes" [tableConfig]="rowVotantes" (crear)="openDialog('votante')" [action]="action" ></app-table>
       </div>
       <div class="p-col-6 table-user">
-        <app-table [titleTable]="'Candidatos'" [tableData]="data.candidatos" [tableConfig]="rowCandidatos" (crear)="openDialog('')"></app-table>
+        <app-table [titleTable]="'Candidatos'" [tableData]="data.candidatos" [tableConfig]="rowCandidatos" (crear)="openDialog('')" [action]="action"></app-table>
       </div>
     </div>
     <div class="p-d-flex p-jc-center">

@@ -1,10 +1,11 @@
 .grafig{
-  width: 44vh;
+  width: 20em;
+  max-width: 20em;
   margin: 2em;
-
+  text-align: center;
 }
 .content{
   display: flex;
   flex-wrap: wrap;
-  justify-content:space-evenly;
+  justify-content: space-between;
 }

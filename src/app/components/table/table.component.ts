@@ -16,7 +16,8 @@ export class TableComponent implements OnInit,OnChanges  {
   @Input() tableConfig:tableRows [];
   @Input() titleTable:string = ''
   @Input() action?:action
-  @Input() search = []
+  @Input() search = [];
+
 
   @Output() crear:EventEmitter<any> =  new EventEmitter();
   public icon = PrimeIcons;

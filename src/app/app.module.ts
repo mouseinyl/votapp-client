@@ -19,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     ComponentsModule,
     BrowserAnimationsModule,
     MenuModule,
-    HttpClientModule
+    HttpClientModule,
+
 
   ],
   providers: [],

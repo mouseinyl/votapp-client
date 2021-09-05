@@ -5,6 +5,7 @@ export interface tableRows {
 export interface action {
   ver?: detailAccion,
   delete?: detailAccion
+  create?:boolean
 }
 
 export interface detailAccion {
