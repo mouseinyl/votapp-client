@@ -12,9 +12,9 @@ export class EventsComponent implements OnInit {
   public cars: any[] = []
   public tableConfig: tableRows[] = [
     { field: 'name', header: 'Nombre' },
-      { field: 'estado', header: 'Estado' },
-      { field: 'candidatos', header: '#candidatos' },
-      { field: 'votantes', header: '#Votantes' },
+    { field: 'estado', header: 'Estado' },
+    { field: 'candidatos', header: '#candidatos' },
+    { field: 'votantes', header: '#Votantes' },
 
   ]
   public action: action = {ver:{estado:true,route:'/administracion/evento'},create:false }

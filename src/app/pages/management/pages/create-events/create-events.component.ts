@@ -5,6 +5,7 @@ import { getTestBed } from '@angular/core/testing';
 import { CreateUserComponent } from '../../components/create-user/create-user.component';
 import { RequestServices } from '../../../../services/request-services.service';
 import { ActivatedRoute } from '@angular/router';
+import { AlertService } from '../../../../services/alert.service';
 
 
 @Component({
@@ -42,7 +43,7 @@ export class CreateEventsComponent implements OnInit {
     votantes: []
   }
   public action:action = {create:false}
-  constructor(private fb: FormBuilder,private request: RequestServices, private route:ActivatedRoute) { }
+  constructor(private fb: FormBuilder,private request: RequestServices, private route:ActivatedRoute, private alert: AlertService) { }
 
   ngOnInit(): void {
     this.initform()
@@ -105,7 +106,7 @@ export class CreateEventsComponent implements OnInit {
         candidatos:this.data.candidatos
       }, this.form.value)
       this.request.post('eventos/crear',body).subscribe((x)=>{
-        console.log(x)
+        this.alert.success("Bien",x.data.message)
       })
     }else{
       console.log("invalido")
@@ -116,7 +117,7 @@ export class CreateEventsComponent implements OnInit {
   initform() {
     this.form = this.fb.group({
       nombre: ['', [Validators.required]],
-      fechaInit: ['11-10-2021', [Validators.required]],
+      fechaInit: ['', [Validators.required]],
       fechaFin: ['', [Validators.required]]
     })
   }
