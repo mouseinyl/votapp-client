@@ -41,6 +41,12 @@
           margin: auto 7px;
         }
       }
+      .logo {
+        transition: 0.4s;
+        display: flex;
+        width: 11vh;
+        margin: auto;
+      }
     }
     & .item-menu {
       transition: 0.4s;
@@ -55,6 +61,12 @@
         font-size: 1.5em;
         color: var(--primary-color);
       }
+    }
+    & .logo {
+      transition: 0.4s;
+      display: flex;
+      width: 7vh;
+      margin: auto;
     }
   }
   .content-body {
@@ -77,12 +89,7 @@
   }
 }
 
-.logo {
-  display: flex;
-  width: 7vh;
 
-  margin: auto;
-}
 .menu {
   &:hover {
     .active {
