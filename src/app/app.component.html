@@ -2,6 +2,7 @@
 
 
   <div class="menu" *ngIf="!clearPage">
+    <img src="assets/logo.png" class="logo" alt="" srcset="">
     <a class="item-menu" *ngFor="let item of menuItems" routerLinkActive='active' [routerLink]="item.router">
       <i [class]="item.icon"></i>
       <span> {{item.name}}</span>

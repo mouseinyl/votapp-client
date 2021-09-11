@@ -77,13 +77,20 @@
   }
 }
 
-.menu{
+.logo {
+  display: flex;
+  width: 7vh;
+
+  margin: auto;
+}
+.menu {
   &:hover {
     .active {
       background-color: var(--primary-color);
       padding: 10px;
       border-radius: 10px;
-      & i,span {
+      & i,
+      span {
         color: white;
       }
     }
@@ -93,10 +100,9 @@
     padding: 10px;
     margin: 3px;
     border-radius: 10px;
-    & i,span {
+    & i,
+    span {
       color: white !important;
     }
   }
-
 }
-
